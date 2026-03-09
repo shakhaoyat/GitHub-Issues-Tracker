@@ -4,13 +4,18 @@ let issuesData = [];
 
 
 // spinner
-const manageSpinner = (status)=>{
-    if(status == true){
-        document.getElementById("spinner").classList.remove("hidden");
-        document.getElementById("issue-container").classList.add("hidden");
-    }else{
-        document.getElementById("issue-container").classList.remove("hidden");
-        document.getElementById("spinner").classList.add("hidden");
+const manageSpinner = (status) => {
+    const spinner = document.getElementById("spinner");
+    const issueContainer = document.getElementById("issue-container");
+
+    if (status == true) {
+        spinner.classList.remove("hidden");
+        spinner.classList.add("flex");
+        issueContainer.classList.add("hidden");
+    } else {
+        issueContainer.classList.remove("hidden");
+        spinner.classList.add("hidden");
+        spinner.classList.remove("flex");
     }
 }
 
@@ -37,7 +42,7 @@ const loadIssueDetail = async (id) => {
 }
 
 const displayIssueDetails = (issue) => {
-    
+
     // console.log(issue);
     const detailsBox = document.getElementById("details-container");
     detailsBox.innerHTML = `
@@ -86,7 +91,7 @@ function showIssues(issues) {
     const issueCount = document.getElementById("issue-count");
     issueCount.innerText = `${filteredIssues.length} Issues`;
 
-    for (let issue of issues) {
+    for (let issue of filteredIssues) {
         // console.log(issue)
         const statusImg = issue.status === "open"
             ? "assets/Open-Status.png"
@@ -145,8 +150,11 @@ function showIssues(issues) {
 // tab-buttons
 const tabButtons = document.querySelectorAll(".issue-tab-btn");
 tabButtons.forEach(btn => {
-    btn.addEventListener("click",async () => {
+    btn.addEventListener("click", async () => {
         activeTab = btn.dataset.tab;
+
+        // Clear search input when switching tabs
+        document.getElementById("input-search").value = "";
 
         tabButtons.forEach(b => {
             b.classList.remove("btn-primary");
@@ -169,15 +177,23 @@ tabButtons.forEach(btn => {
     })
 })
 
-document.getElementById("btn-search").addEventListener("click", async () => {
-    const input = document.getElementById("input-search");
-    const searchValue = input.value.trim().toLowerCase();
+// Search functionality - triggered on input
+document.getElementById("input-search").addEventListener("input", async (e) => {
+    const searchValue = e.target.value.trim().toLowerCase();
 
-    const res = await fetch("https://phi-lab-server.vercel.app/api/v1/lab/issues");
-    const data = await res.json();
+    if (searchValue === "") {
+        // Show all issues respecting the active tab
+        if (activeTab === "all") {
+            showIssues(issuesData);
+        } else {
+            const filtered = issuesData.filter(issue => issue.status === activeTab);
+            showIssues(filtered);
+        }
+        return;
+    }
 
-    const allIssues = data.data;
-    const filtered = allIssues.filter(issue =>
+    // Filter by search term, then the result will be filtered by activeTab in showIssues
+    const filtered = issuesData.filter(issue =>
         issue.title.toLowerCase().includes(searchValue) ||
         issue.description.toLowerCase().includes(searchValue)
     );
