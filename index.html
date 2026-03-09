@@ -26,7 +26,7 @@
 </head>
 
 <body>
-    <section class="shadow-sm mw-[520px] w-9/12 md:w-3/12 mx-auto rounded-md p-8 mt-20 md:mt-40">
+    <section class="shadow-sm max-w-[520px] w-9/12 md:w-3/12 mx-auto rounded-md p-8 mt-20 md:mt-40">
         <div class="github-head text-center justify-center space-y-6">
             <div class="github-logo flex justify-center">
                 <img src="assets/github-logo.png" alt="">
@@ -38,25 +38,32 @@
         </div>
 
         <!-- login -->
-        <div class="fieldset mb-7">
+        <div class="fieldset mb-7 mt-8">
 
             <label class="label font-medium text-[#1F2937]">Username</label>
-            <input id="username-input" type="text" class="input w-full rounded-sm" placeholder="Enter Username" />
+            <input id="username-input" type="text" class="input input-bordered w-full rounded-md"
+                placeholder="Enter Username" />
+            <p class="text-sm text-primary mt-1">Default: admin</p>
 
-            <label class="label font-medium text-[#1F2937]">Password</label>
-            <input id="password-input" type="password" class="input w-full rounded-sm" placeholder="Enter Password" />
+            <label class="label font-medium text-[#1F2937] mt-4">Password</label>
+            <input id="password-input" type="password" class="input input-bordered w-full rounded-md"
+                placeholder="Enter Password" />
+            <p class="text-sm text-primary mt-1">Default: admin123</p>
 
-            <button id="sign-btn" class="btn btn-primary mt-4">Sign In</button>
+            <button id="sign-btn" class="btn btn-primary w-full mt-6 rounded-md">Sign In</button>
         </div>
-
+        <!-- OR separator -->
+        <div class="text-center my-4">
+            <p class="text-[#94A3B8] text-sm font-medium">OR</p>
+        </div>
         <!-- default pass -->
-         <div class="text-center">
-            <p class="text-[#64748B] text-[14px]">Demo Credentials:</p>
-            <div class="bg-[#F8FAFC] p-6 rounded-md">
-                <p><span class="font-bold">Username:</span> admin</p>
-                <p><span class="font-bold">Password:</span> admin123</p>
+        <div class="text-center">
+            <p class="text-[#64748B] text-sm font-medium mb-3">Demo Credentials:</p>
+            <div class="bg-[#F8FAFC] p-4 rounded-md border border-[#E2E8F0]">
+                <p class="text-sm text-[#1F2937]"><span class="font-semibold">Username:</span> admin</p>
+                <p class="text-sm text-[#1F2937] mt-1"><span class="font-semibold">Password:</span> admin123</p>
             </div>
-         </div>
+        </div>
     </section>
 
 

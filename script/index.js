@@ -1,5 +1,5 @@
 // console.log("Hello this is login page")
-document.getElementById("sign-btn").addEventListener("click",()=>{
+document.getElementById("sign-btn").addEventListener("click", () => {
 
     // 1-get the username & pass from the input's
     const usernameInput = document.getElementById("username-input");
@@ -12,10 +12,10 @@ document.getElementById("sign-btn").addEventListener("click",()=>{
 
 
     // 2- match username and password
-    if(username === "admin" && password === "admin123"){
+    if (username === "admin" && password === "admin123") {
         alert("Login Successful");
-        window.location.assign("/home.html");
-    }else{
+        window.location.assign("home.html");
+    } else {
         alert("Login Failed");
         return;
     }
