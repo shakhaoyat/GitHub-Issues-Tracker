@@ -1,0 +1,23 @@
+/* 
+ * GitHub Issues Tracker - Tailwind + DaisyUI Version
+ * Most styling is handled by Tailwind utility classes
+ * This file contains only custom styles for specific features
+ */
+
+/* Issue card border colors based on status */
+.issue-card.open {
+      border-top-color: #1a7f37 !important;
+}
+
+.issue-card.closed {
+      border-top-color: #8250df !important;
+}
+
+/* Line clamp utility for text truncation */
+.line-clamp-2 {
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+}

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+<head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>GitHub Issues Tracker - Login</title>
+      <!-- Tailwind CSS & DaisyUI -->
+      <link href="https://cdn.jsdelivr.net/npm/daisyui@4.6.0/dist/full.min.css" rel="stylesheet" type="text/css" />
+      <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body
+      class="min-h-screen bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500 flex items-center justify-center p-4">
+      <div class="w-full max-w-md">
+            <div class="card bg-base-100 shadow-2xl">
+                  <div class="card-body">
+                        <!-- Logo -->
+                        <div class="flex justify-center mb-4">
+                              <img src="./assets/github-logo.png" alt="GitHub Logo" class="w-20 h-20">
+                        </div>
+
+                        <!-- Title and Subtitle -->
+                        <h1 class="text-3xl font-bold text-center text-base-content mb-2">GitHub Issues Tracker</h1>
+                        <p class="text-center text-base-content/70 mb-6">Sign in to manage your issues</p>
+
+                        <!-- Login Form -->
+                        <form id="loginForm" class="space-y-4">
+                              <div class="form-control">
+                                    <label class="label">
+                                          <span class="label-text font-semibold">Username</span>
+                                    </label>
+                                    <input type="text" id="username" name="username" placeholder="Enter Username"
+                                          class="input input-bordered w-full" required>
+                                    <label class="label">
+                                          <span class="label-text-alt text-purple-600 font-medium">Default: admin</span>
+                                    </label>
+                              </div>
+
+                              <div class="form-control">
+                                    <label class="label">
+                                          <span class="label-text font-semibold">Password</span>
+                                    </label>
+                                    <input type="password" id="password" name="password" placeholder="Enter Password"
+                                          class="input input-bordered w-full" required>
+                                    <label class="label">
+                                          <span class="label-text-alt text-purple-600 font-medium">Default:
+                                                admin123</span>
+                                    </label>
+                              </div>
+
+                              <button type="submit" class="btn btn-primary w-full text-white">Sign In</button>
+
+                              <div class="divider">OR</div>
+
+                              <div class="bg-base-200 rounded-lg p-4 text-center">
+                                    <p class="font-semibold mb-2">Demo Credentials:</p>
+                                    <p><strong>Username:</strong> admin</p>
+                                    <p><strong>Password:</strong> admin123</p>
+                              </div>
+                        </form>
+
+                        <div id="errorMessage" class="alert alert-error mt-4" style="display: none;">
+                              <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current shrink-0 h-6 w-6"
+                                    fill="none" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                          d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                              </svg>
+                              <span id="errorText"></span>
+                        </div>
+                  </div>
+            </div>
+      </div>
+
+      <script src="login.js"></script>
+</body>
+
+</html>
